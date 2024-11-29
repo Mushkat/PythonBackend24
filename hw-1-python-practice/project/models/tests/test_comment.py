@@ -13,7 +13,7 @@ class TestComment:
     def test_edit_comment(self):
         self.comment.edit_comment('new_comment_text')
         assert self.comment.text == 'new_comment_text'
-        assert self.comment.create_data != self.comment.update_data
+        assert self.comment.create_date != self.comment.update_date
 
     @pytest.mark.parametrize('like_count', [0, 1, 2, 5])
     def test_like(self, like_count):

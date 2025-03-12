@@ -1,0 +1,66 @@
+[
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "username": "user1",
+            "email": "user1@example.com"
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 2,
+        "fields": {
+            "username": "user2",
+            "email": "user2@example.com"
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 1,
+        "fields": {
+            "title": "Первый пост",
+            "content": "Текст первого поста",
+            "author": 1,
+            "created_at": "2025-03-12T12:00:00Z",
+            "updated_at": "2025-03-12T12:05:00Z",
+            "likes": [2]
+        }
+    },
+    {
+        "model": "posts.post",
+        "pk": 2,
+        "fields": {
+            "title": "Второй пост",
+            "content": "Текст второго поста",
+            "author": 2,
+            "created_at": "2025-03-12T13:00:00Z",
+            "updated_at": "2025-03-12T13:05:00Z",
+            "likes": [1]
+        }
+    },
+    {
+        "model": "posts.comment",
+        "pk": 1,
+        "fields": {
+            "post": 1,
+            "author": 2,
+            "text": "Комментарий к первому посту",
+            "created_at": "2025-03-12T14:00:00Z",
+            "updated_at": "2025-03-12T14:05:00Z",
+            "likes": [1]
+        }
+    },
+    {
+        "model": "posts.comment",
+        "pk": 2,
+        "fields": {
+            "post": 2,
+            "author": 1,
+            "text": "Комментарий ко второму посту",
+            "created_at": "2025-03-12T15:00:00Z",
+            "updated_at": "2025-03-12T15:05:00Z",
+            "likes": [2]
+        }
+    }
+]

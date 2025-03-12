@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from .models import Post, Comment
 from .serializers import UserSerializer, PostSerializer, CommentSerializer
 
+# View для всех моделей
+
 class UserViewSet(viewsets.ModelViewSet):
     """
     CRUD для пользователей.

@@ -18,7 +18,16 @@ python manage.py loaddata mock_data.json
 Команда для контейнера
 
 ```
-cd .\comment_service_project\storage\
-docker build -t myproject .
+cd .\comment_service_project\
+docker-compose -f storage/docker-compose.yml build
+docker-compose -f storage/docker-compose.yml up -d
 ```
 ![img_1.png](img_1.png)
+
+Тесты
+Запускаются с помощью
+```
+python manage.py test
+```
+Результаты тестов
+![img_2.png](img_2.png)

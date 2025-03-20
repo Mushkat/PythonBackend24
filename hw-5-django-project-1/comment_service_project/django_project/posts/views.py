@@ -4,6 +4,8 @@ from rest_framework.decorators import action
 from django.contrib.auth.models import User
 from .models import Post, Comment
 from .serializers import UserSerializer, PostSerializer, CommentSerializer
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
+from rest_framework import generics
 
 # View для всех моделей
 
@@ -21,6 +23,10 @@ class PostViewSet(viewsets.ModelViewSet):
     """
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
     @action(detail=True, methods=['post'])
     def like(self, request, pk=None):
@@ -43,6 +49,7 @@ class CommentViewSet(viewsets.ModelViewSet):
     """
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+    permission_classes = [IsAdminUser]
 
     @action(detail=True, methods=['post'])
     def like(self, request, pk=None):
@@ -57,3 +64,7 @@ class CommentViewSet(viewsets.ModelViewSet):
         else:
             comment.likes.add(user)
             return Response({'status': 'лайк добавлен'}, status=status.HTTP_200_OK)
+
+class RegisterView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
